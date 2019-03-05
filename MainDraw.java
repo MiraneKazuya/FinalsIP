@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.awt.Rectangle;
 
 public class MainDraw extends JComponent{
 
@@ -21,11 +22,10 @@ public class MainDraw extends JComponent{
 
 	public int state = 0;
 
-	public int HEALTH = 100 * 2;
-	public int MANA = 100 * 2;
+	MainMonster monster;
 
 	public MainDraw(){
-		idleAnimation();
+		//idleAnimation();
 		try{
 			image = ImageIO.read(resource);
 			backgroundImage = ImageIO.read(getClass().getResource("background.jpg"));
@@ -33,6 +33,8 @@ public class MainDraw extends JComponent{
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		monster = new MainMonster(200, 200);
+		startGame();
 	}
 
 	public void reloadImageRun(){
@@ -150,7 +152,7 @@ public class MainDraw extends JComponent{
 		thread1.start();
 	}
 
-	public void idleAnimation(){
+	/*public void idleAnimation(){
 		idleImages = new URL [3];
 		state = 0;
 		Thread thread2 = new Thread(new Runnable(){
@@ -186,6 +188,26 @@ public class MainDraw extends JComponent{
 			
 		});
 		thread2.start();
+	}*/
+
+	public void startGame(){
+		Thread gameThread = new Thread(new Runnable(){
+			public void run(){
+				while(true){
+					try{
+							if(monster!=null){
+								monster.moveTo(x,y);
+								//bothCollision();
+								repaint();
+							}
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+							e.printStackTrace();
+					}
+				}
+			}
+		});
+		gameThread.start();
 	}
 
 	public void jump(){
@@ -237,10 +259,7 @@ public class MainDraw extends JComponent{
 		g.drawImage(backgroundImage, 0, 0, this);
 		g.drawImage(image, x, y, this);
 
-		g.setColor(Color.red);
-		g.fillRect(5, 5, HEALTH, 20);
-		g.setColor(Color.blue);
-		g.fillRect(5, 30, MANA, 20);
+		g.drawImage(monster.image, monster.xPos, monster.yPos, this);
 	}
 
 }

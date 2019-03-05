@@ -44,26 +44,26 @@ public class MainFrame extends JFrame implements KeyListener{
 	public void keyReleased(KeyEvent e){
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
 			gameDraw.idleBruh = true;
-			gameDraw.idleAnimation();
+			//gameDraw.idleAnimation();
 		}
 
 		else if(e.getKeyCode() == KeyEvent.VK_LEFT){
 			gameDraw.idleBruh = true;
-			gameDraw.idleAnimation();
+			//gameDraw.idleAnimation();
 		}
 
 		else if(e.getKeyCode() == KeyEvent.VK_UP){
 			gameDraw.idleBruh = true;
-			gameDraw.idleAnimation();
+			//gameDraw.idleAnimation();
 		}
 
 		else if(e.getKeyCode() == KeyEvent.VK_DOWN){
 			gameDraw.idleBruh = true;
-			gameDraw.idleAnimation();
+			//gameDraw.idleAnimation();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			gameDraw.idleBruh = true;
-			gameDraw.idleAnimation();
+			//gameDraw.idleAnimation();
 		}	
 		else if(e.getKeyCode() == KeyEvent.VK_A){
 			gameDraw.idleBruh = true;	
