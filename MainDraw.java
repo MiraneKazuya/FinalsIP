@@ -22,6 +22,9 @@ public class MainDraw extends JComponent{
 
 	public int state = 0;
 
+	public int HEALTH = 200;
+	public int MANA = 200;
+
 	MainMonster monster;
 
 	public MainDraw(){
@@ -259,6 +262,13 @@ public class MainDraw extends JComponent{
 		g.drawImage(backgroundImage, 0, 0, this);
 		g.drawImage(image, x, y, this);
 
+		g.setColor(Color.gray);
+		g.fillRect(5, 5, 200, 20);
+		g.setColor(Color.red);
+		g.fillRect(5, 5, HEALTH, 20);
+		g.setColor(Color.blue);
+		g.fillRect(5, 30, MANA, 20);
+		
 		g.drawImage(monster.image, monster.xPos, monster.yPos, this);
 	}
 
