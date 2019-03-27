@@ -84,6 +84,7 @@ public class MainFrame extends JFrame implements KeyListener{
 		gameFrame.setSize(600,600);
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameFrame.setVisible(true);
+		gameFrame.setLocationRelativeTo(null);
 		gameFrame.getContentPane().add(gameFrame.gameDraw);
 		gameFrame.addKeyListener(gameFrame);
 		System.out.println("BRUH");

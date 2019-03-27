@@ -16,9 +16,10 @@ public class MainDraw extends JComponent{
 	private BufferedImage backgroundImage;
 	public URL resource = getClass().getResource("Running/run0.png");
 	public URL idleImages[];
+	public SoundLoader soundLoader;
 
 	public int x = 75;
-	public int y = 150;
+	public int y = 500;
 
 	public int state = 0;
 
@@ -29,6 +30,12 @@ public class MainDraw extends JComponent{
 
 	public MainDraw(){
 		//idleAnimation();
+
+		soundLoader = new SoundLoader();
+		//Add Sound path here
+		soundLoader.loadSound("Game-Menu.wav");
+		soundLoader.playBackGroundMusic();
+
 		try{
 			image = ImageIO.read(resource);
 			backgroundImage = ImageIO.read(getClass().getResource("background.jpg"));
@@ -213,6 +220,8 @@ public class MainDraw extends JComponent{
 		gameThread.start();
 	}
 
+
+
 	public void jump(){
 		jumpingAnimation();
 		idleBruh = false;
@@ -259,6 +268,7 @@ public class MainDraw extends JComponent{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.YELLOW);
+		
 		g.drawImage(backgroundImage, 0, 0, this);
 		g.drawImage(image, x, y, this);
 
